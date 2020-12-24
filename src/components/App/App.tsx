@@ -1,10 +1,37 @@
 import { useState, useEffect } from "react";
+import styled from "styled-components";
+import { useWindupString } from "windups";
 import { motion } from "framer-motion";
-import { sections } from "../../data";
 import "./App.css";
+
+const FullBleedCentered = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+`;
+
+const VoucherContent = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-family: monospace;
+  color: #dd8888;
+`;
 
 const App: React.FC<{}> = () => {
   const [dash, setDash] = useState<number>(10);
+  const [
+    text,
+    { skip, rewind, isFinished },
+  ] = useWindupString(
+    "This voucher good for one (1) hand-crafted portfolio website by Toby and Helena.",
+    { pace: (char) => (char === " " ? 120 : 40) }
+  );
 
   useEffect(() => {
     let handle: number;
@@ -13,25 +40,18 @@ const App: React.FC<{}> = () => {
       handle = requestAnimationFrame(dancingDash);
     };
     dancingDash();
-
     return () => cancelAnimationFrame(handle);
   }, []);
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        width: "100vw",
-        display: "grid",
-        placeItems: "center",
-      }}
-    >
+    <FullBleedCentered>
       <svg
         width="810"
         height="610"
         viewBox="0 0 810 610"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        onClick={isFinished ? rewind : skip}
       >
         <rect
           opacity={0.5}
@@ -52,21 +72,7 @@ const App: React.FC<{}> = () => {
         </rect>
         <foreignObject x={5} y={5} width={800} height={600}>
           {/* @ts-ignore */}
-          <div
-            style={{
-              height: "100%",
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 32,
-              fontFamily: "monospace",
-              color: "#DD8888",
-            }}
-            // @ts-ignore
-            xmlns="http://www.w3.org/1999/xhtml"
-          >
+          <VoucherContent xmlns="http://www.w3.org/1999/xhtml">
             The future site of{" "}
             <a
               href="https://karennielsenfried.com"
@@ -75,16 +81,13 @@ const App: React.FC<{}> = () => {
               <strong>karennielsenfried.com</strong>
             </a>
             <br />
-            <small
-              style={{ fontSize: 16, maxWidth: "50%", textAlign: "center" }}
-            >
-              This voucher good for one (1) hand-crafted portfolio website by
-              Toby and Helena
-            </small>
-          </div>
+            <p style={{ fontSize: 16, maxWidth: "50%", textAlign: "center" }}>
+              {text}
+            </p>
+          </VoucherContent>
         </foreignObject>
       </svg>
-    </div>
+    </FullBleedCentered>
   );
 };
 export default App;
