@@ -2,11 +2,9 @@ import blue_meander from "../assets/meanders/blue_meander.webp";
 import grey_meander from "../assets/meanders/grey_meander.webp";
 import golden_meander from "../assets/meanders/golden_meander.webp";
 import walkabout from "../assets/meanders/walkabout.webp";
-
 import forget_me_not from "../assets/poetics_of_space/forget_me_not.webp";
 import let_everything_happen from "../assets/poetics_of_space/let_everything_happen.webp";
 import scroll from "../assets/poetics_of_space/scroll.webp";
-
 import instructions_not_included from "../assets/instructions_not_included/instructions_not_included.webp";
 import open_book from "../assets/instructions_not_included/open_book.webp";
 import unexpected_outcome from "../assets/instructions_not_included/unexpected_outcome.webp";
@@ -33,7 +31,7 @@ const BodyOfWork: Series[] = [
         title: "Blue Meander",
         src: blue_meander,
         media: "Acrylic on canvas",
-        alt: "",
+        alt: "", 
         size: [40, 33],
       },
       {
