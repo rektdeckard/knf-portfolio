@@ -33,15 +33,15 @@ const App: React.FC<{}> = () => {
     { pace: (char) => (char === " " ? 120 : 40) }
   );
 
-  useEffect(() => {
-    let handle: number;
-    const dancingDash = () => {
-      setDash((d) => d + 1);
-      handle = requestAnimationFrame(dancingDash);
-    };
-    dancingDash();
-    return () => cancelAnimationFrame(handle);
-  }, []);
+  // useEffect(() => {
+  //   let handle: number;
+  //   const dancingDash = () => {
+  //     setDash((d) => d + 1);
+  //     handle = requestAnimationFrame(dancingDash);
+  //   };
+  //   dancingDash();
+  //   return () => cancelAnimationFrame(handle);
+  // }, []);
 
   return (
     <FullBleedCentered>
@@ -66,6 +66,13 @@ const App: React.FC<{}> = () => {
           strokeDasharray="20 10"
           strokeDashoffset={-dash}
         >
+          <animate
+            attributeName="stroke-dashoffset"
+            from="-10"
+            to="-100"
+            dur="1500ms"
+            repeatCount="indefinite"
+          />
           <foreignObject height={600} width={800} x={0} y={0}>
             <div style={{ color: "white" }}>Hello World</div>
           </foreignObject>
@@ -81,7 +88,14 @@ const App: React.FC<{}> = () => {
               <strong>karennielsenfried.com</strong>
             </a>
             <br />
-            <p style={{ fontSize: 16, maxWidth: "50%", textAlign: "center" }}>
+            <p
+              style={{
+                fontSize: 16,
+                maxWidth: "50%",
+                textAlign: "center",
+                minHeight: 38,
+              }}
+            >
               {text}
             </p>
           </VoucherContent>
