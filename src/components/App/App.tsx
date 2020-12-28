@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useWindupString } from "windups";
-import { motion } from "framer-motion";
 import "./App.css";
 
 const FullBleedCentered = styled.div`
@@ -9,6 +7,12 @@ const FullBleedCentered = styled.div`
   width: 100vw;
   display: grid;
   place-items: center;
+  color: ${(props) => props.color};
+
+  & a {
+    color: inherit;
+    font-size: 40px;
+  }
 `;
 
 const VoucherContent = styled.div`
@@ -20,11 +24,9 @@ const VoucherContent = styled.div`
   justify-content: center;
   font-size: 32px;
   font-family: monospace;
-  color: #dd8888;
 `;
 
 const App: React.FC<{}> = () => {
-  const [dash, setDash] = useState<number>(10);
   const [
     text,
     { skip, rewind, isFinished },
@@ -33,18 +35,8 @@ const App: React.FC<{}> = () => {
     { pace: (char) => (char === " " ? 120 : 40) }
   );
 
-  // useEffect(() => {
-  //   let handle: number;
-  //   const dancingDash = () => {
-  //     setDash((d) => d + 1);
-  //     handle = requestAnimationFrame(dancingDash);
-  //   };
-  //   dancingDash();
-  //   return () => cancelAnimationFrame(handle);
-  // }, []);
-
   return (
-    <FullBleedCentered>
+    <FullBleedCentered color="#DD8888">
       <svg
         width="810"
         height="610"
@@ -54,17 +46,15 @@ const App: React.FC<{}> = () => {
         onClick={isFinished ? rewind : skip}
       >
         <rect
-          opacity={0.5}
           x={5}
           y={5}
           width={800}
           height={600}
           rx={56}
-          stroke="#D33535"
+          stroke="currentColor"
           strokeWidth={5}
           strokeLinejoin="round"
           strokeDasharray="20 10"
-          strokeDashoffset={-dash}
         >
           <animate
             attributeName="stroke-dashoffset"
@@ -81,10 +71,7 @@ const App: React.FC<{}> = () => {
           {/* @ts-ignore */}
           <VoucherContent xmlns="http://www.w3.org/1999/xhtml">
             The future site of{" "}
-            <a
-              href="https://karennielsenfried.com"
-              style={{ color: "#DD8888", fontSize: 40 }}
-            >
+            <a href="https://karennielsenfried.com">
               <strong>karennielsenfried.com</strong>
             </a>
             <br />
