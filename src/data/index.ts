@@ -1,1 +1,2 @@
-export { default as sections } from "./sections";
+export * from "./types";
+export { default as featured } from "./series";

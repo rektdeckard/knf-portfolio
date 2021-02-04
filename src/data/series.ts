@@ -1,3 +1,5 @@
+import { Series } from "./types";
+
 import blue_meander from "../assets/meanders/blue_meander.webp";
 import grey_meander from "../assets/meanders/grey_meander.webp";
 import golden_meander from "../assets/meanders/golden_meander.webp";
@@ -10,28 +12,16 @@ import open_book from "../assets/instructions_not_included/open_book.webp";
 import unexpected_outcome from "../assets/instructions_not_included/unexpected_outcome.webp";
 import unfolding_story from "../assets/instructions_not_included/unfolding_as_it_should.webp";
 
-interface Artwork {
-  title: string;
-  src: string;
-  media?: string;
-  alt?: string;
-  size?: [number, number];
-}
-
-interface Series {
-  name: string;
-  works: Artwork[];
-}
-
-const BodyOfWork: Series[] = [
+const featured: Series[] = [
   {
     name: "Meanders",
+    color: "#edc3af",
     works: [
       {
         title: "Blue Meander",
         src: blue_meander,
         media: "Acrylic on canvas",
-        alt: "", 
+        alt: "",
         size: [40, 33],
       },
       {
@@ -59,6 +49,7 @@ const BodyOfWork: Series[] = [
   },
   {
     name: "Poetics of Space",
+    color: "#d6cdb3",
     works: [
       {
         title: "Forget Me Not",
@@ -76,46 +67,47 @@ const BodyOfWork: Series[] = [
       },
       {
         title: "Scroll",
-        src: "",
-        media: scroll,
-        alt: "Acrylic on panel",
+        src: scroll,
+        media: "Acrylic on panel",
+        alt: "",
         size: [36, 24],
       },
     ],
   },
   {
     name: "Instructions Not Included",
+    color: "#c9dbe0",
     works: [
       {
         title: "Instructions Not Included",
         src: instructions_not_included,
-        media: "",
-        alt: "Acrylic on panel",
+        media: "Acrylic on panel",
+        alt: "",
         size: [24, 30],
       },
       {
         title: "Open Book",
         src: open_book,
-        media: "",
-        alt: "Acrylic on panel",
+        media: "Acrylic on panel",
+        alt: "",
         size: [20, 30],
       },
       {
         title: "Unexpected Outcome",
         src: unexpected_outcome,
-        media: "",
-        alt: "Acrylic on panel",
+        media: "Acrylic on panel",
+        alt: "",
         size: [24, 36],
       },
       {
         title: "Unfolding Story",
         src: unfolding_story,
-        media: "",
-        alt: "Acrylic on panel",
+        media: "Acrylic on panel",
+        alt: "",
         size: [30, 36],
       },
     ],
   },
 ];
 
-export default BodyOfWork;
+export default featured;
