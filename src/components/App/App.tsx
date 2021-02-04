@@ -1,43 +1,31 @@
 import styled from "styled-components";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+
 import "./App.css";
-import Voucher from "../Voucher/Voucher";
-import Brushstroke from "../Brushstroke/Brushstroke";
-import Filmstrip from "../Filmstrip/Filmstrip";
+import Demo from "../Demo/Demo";
+import Featured from "../Featured/Featured";
+import { activeSectionAtom } from "../../state";
 
-const FullBleedCentered = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: grid;
-  place-items: center;
-  color: ${(props) => props.color};
-
-  & a {
-    color: inherit;
-  }
+const AppWrapper = styled.main`
+  background-color: ${(props) => props.color};
+  transition: background-color 500ms ease;
 `;
 
 const App: React.FC<{}> = () => {
+  const { color } = useRecoilValue(activeSectionAtom);
+
   return (
-    <Router>
-      <Switch>
-        <Route path="/brushstroke" component={Brushstroke} />
-        <Route path="/filmstrip" component={Filmstrip} />
-        <Route path="/">
-          <FullBleedCentered color="#DD8888">
-            <Voucher />
-            <ul>
-              <li>
-                <Link to="/brushstroke">Brushstroke</Link>
-              </li>
-              <li>
-                <Link to="/filmstrip">Filmstrip</Link>
-              </li>
-            </ul>
-          </FullBleedCentered>
-        </Route>
-      </Switch>
-    </Router>
+    <AppWrapper color={color}>
+      <Router>
+        <Switch>
+          <Route path="/demo" component={Demo} />
+          <Route path="/">
+            <Featured />
+          </Route>
+        </Switch>
+      </Router>
+    </AppWrapper>
   );
 };
 export default App;
