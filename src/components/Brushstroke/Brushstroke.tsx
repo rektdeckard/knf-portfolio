@@ -7,22 +7,8 @@ const Brushstroke: React.FC<{}> = () => {
 
   return (
     <Content>
-      {/* <motion.svg
-        width="1175"
-        height="2892"
-        viewBox="0 0 1175 2892"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <motion.path
-          d="M749 -23C837 89 936.6 380.6 615 539C213 737 -183 937 141 1137C465 1337 943 887 875 1167C807 1447 151 2083 31.0003 1765C-88.9997 1447 175 1273 395 1519C615 1765 565 2239 935 2227C1305 2215 1171 1929 1023 1977C875 2025 801 2403 1111 2891"
-          stroke="currentColor"
-          strokeWidth={8}
-          style={{ pathLength: scrollYProgress }}
-          strokeLinecap="round"
-        />
-      </motion.svg> */}
       <motion.svg
+        // width="100%"
         width="1237"
         height="2928"
         viewBox="0 0 1237 2928"
