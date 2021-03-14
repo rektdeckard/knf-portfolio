@@ -1,5 +1,17 @@
 import { Series } from "./types";
+import {
+  CenterAlign,
+  FullWidth,
+  LeftAlign,
+  Quote,
+  RightAlign,
+  Spacer,
+} from "../components/Modules";
 
+import breathing_room from "../assets/touchstone/breathing_room.jpg";
+import pink_cairn from "../assets/touchstone/pink_cairn.jpg";
+import sticks_and_stones_golden from "../assets/touchstone/sticks_and_stones_(golden).jpg";
+import sticks_and_stones_pink from "../assets/touchstone/sticks_and_stones_(pink).jpg";
 import blue_meander from "../assets/meanders/blue_meander.webp";
 import grey_meander from "../assets/meanders/grey_meander.webp";
 import golden_meander from "../assets/meanders/golden_meander.webp";
@@ -14,97 +26,177 @@ import unfolding_story from "../assets/instructions_not_included/unfolding_as_it
 
 const featured: Series[] = [
   {
+    name: "Touchstone",
+    color: "#D8DDC6",
+    accent: "#479990",
+    works: [
+      {
+        title: "Breathing Room",
+        sources: [{ srcSet: breathing_room }],
+        media: "Acrylic on paper",
+        alt: "",
+        size: [30, 22],
+        Module: LeftAlign,
+      },
+      { height: 96, Module: Spacer },
+      {
+        text:
+          "A little blurb, a musing about this series. A poem that pairs, a quotation, something else.",
+        Module: Quote,
+      },
+      { height: 96, Module: Spacer },
+      {
+        title: "Pink Cairn",
+        sources: [{ srcSet: pink_cairn }],
+        media: "Acrylic on paper",
+        alt: "",
+        size: [30, 22],
+        Module: RightAlign,
+      },
+      {
+        title: "Sticks and Stones (Golden)",
+        sources: [{ srcSet: sticks_and_stones_golden }],
+        media: "Acrylic on paper",
+        alt: "",
+        size: [30, 22],
+        Module: CenterAlign,
+      },
+      { height: 160, Module: Spacer },
+      {
+        title: "Sticks and Stones (Pink)",
+        sources: [{ srcSet: sticks_and_stones_pink }],
+        media: "Acrylic on paper",
+        alt: "",
+        size: [30, 22],
+        Module: RightAlign,
+      },
+    ],
+  },
+  {
     name: "Meanders",
     color: "#edc3af",
+    accent: "#C15728",
     works: [
       {
         title: "Blue Meander",
-        src: blue_meander,
+        sources: [{ srcSet: blue_meander }],
         media: "Acrylic on canvas",
         alt: "",
         size: [40, 33],
+        Module: LeftAlign,
+      },
+      { height: 96, Module: Spacer },
+      {
+        text:
+          "A little blurb, a musing about this series. A poem that pairs, a quotation, something else.",
+        Module: Quote,
       },
       {
         title: "Golden Meander",
-        src: golden_meander,
+        sources: [{ srcSet: golden_meander }],
         media: "Acrylic on canvas",
         alt: "",
         size: [33, 72],
+        Module: FullWidth,
       },
       {
         title: "Grey Meander",
-        src: grey_meander,
+        sources: [{ srcSet: grey_meander }],
         media: "Acrylic on canvas",
         alt: "",
         size: [23, 25],
+        Module: CenterAlign,
       },
       {
         title: "Walkabout",
-        src: walkabout,
+        sources: [{ srcSet: walkabout }],
         media: "Acrylic on panel",
         alt: "",
         size: [30, 15],
+        Module: RightAlign,
       },
     ],
   },
   {
     name: "Poetics of Space",
     color: "#d6cdb3",
+    accent: "#58696F",
     works: [
       {
         title: "Forget Me Not",
-        src: forget_me_not,
+        sources: [{ srcSet: forget_me_not }],
         media: "",
         alt: "Acrylic on panel",
         size: [36, 36],
+        Module: LeftAlign,
       },
       {
         title: "Let Everything Happen",
-        src: let_everything_happen,
+        sources: [{ srcSet: let_everything_happen }],
         media: "",
         alt: "Acrylic on panel",
         size: [36, 36],
+        Module: CenterAlign,
       },
+      { height: 160, Module: Spacer },
       {
         title: "Scroll",
-        src: scroll,
+        sources: [{ srcSet: scroll }],
         media: "Acrylic on panel",
         alt: "",
         size: [36, 24],
+        Module: RightAlign,
+      },
+      {
+        text:
+          "A little blurb, a musing about this series. A poem that pairs, a quotation, something else.",
+        Module: Quote,
       },
     ],
   },
   {
     name: "Instructions Not Included",
     color: "#c9dbe0",
+    accent: "#7294A4",
     works: [
       {
         title: "Instructions Not Included",
-        src: instructions_not_included,
+        sources: [{ srcSet: instructions_not_included }],
         media: "Acrylic on panel",
         alt: "",
         size: [24, 30],
+        Module: LeftAlign,
       },
       {
         title: "Open Book",
-        src: open_book,
+        sources: [{ srcSet: open_book }],
         media: "Acrylic on panel",
         alt: "",
         size: [20, 30],
+        Module: FullWidth,
+      },
+      { height: 96, Module: Spacer },
+      {
+        text:
+          "A little blurb, a musing about this series. A poem that pairs, a quotation, something else.",
+        Module: Quote,
       },
       {
         title: "Unexpected Outcome",
-        src: unexpected_outcome,
+        sources: [{ srcSet: unexpected_outcome }],
         media: "Acrylic on panel",
         alt: "",
         size: [24, 36],
+        Module: LeftAlign,
       },
+      { height: 96, Module: Spacer },
       {
         title: "Unfolding Story",
-        src: unfolding_story,
+        sources: [{ srcSet: unfolding_story }],
         media: "Acrylic on panel",
         alt: "",
         size: [30, 36],
+        Module: RightAlign,
       },
     ],
   },

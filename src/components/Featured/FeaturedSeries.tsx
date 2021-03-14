@@ -1,15 +1,14 @@
 import React, { MutableRefObject, useRef } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { useIntersection } from "react-use";
+import { useIntersection, useDebounce } from "react-use";
 import { useRecoilState } from "recoil";
 import { XMasonry, XBlock } from "react-xmasonry";
-import { Masonry } from "masonic";
 
 import { FullWidth } from "../Modules";
 import { Series } from "../../data/";
 import { activeSectionAtom } from "../../state";
-import { isArtwork, isQuotation } from "../../utils";
+import { isArtwork, isQuotation, slugify } from "../../utils";
 
 const Layout = styled.section`
   position: relative;
@@ -40,40 +39,28 @@ const Timeline: React.FC<Series> = ({ name, color, accent, works }) => {
   const [activeSection, setActiveSection] = useRecoilState(activeSectionAtom);
   const seriesRef = useRef() as MutableRefObject<HTMLDivElement>;
   const intersection = useIntersection(seriesRef, interserctionOptions);
-
-  if (intersection && intersection.isIntersecting) {
-    console.log(name, intersection);
-    const { time, intersectionRatio } = intersection;
-    if (name !== activeSection.name) {
-      setActiveSection((curr) =>
-        time > curr.time
-          ? { name, color, accent, time, intersectionRatio }
-          : curr
-      );
-      console.log(`/featured/${name.split(" ").join("-").toLowerCase()}`);
-      history.push(`/featured/${name.split(" ").join("-").toLowerCase()}`);
-    }
-  }
+  
+  useDebounce(
+    () => {
+      if (intersection && intersection.isIntersecting) {
+        const { time, intersectionRatio } = intersection;
+        if (name !== activeSection.name) {
+          setActiveSection((curr) =>
+            time > curr.time
+              ? { name, color, accent, time, intersectionRatio }
+              : curr
+          );
+          history.push(`/featured/${slugify(name)}`);
+        }
+      }
+    },
+    200,
+    [intersection, activeSection, setActiveSection]
+  );
 
   return (
-    <Layout ref={seriesRef}>
+    <Layout ref={seriesRef} id={slugify(name)}>
       <SectionHeading>{name}</SectionHeading>
-      {/* <Masonry
-        items={works}
-        columnCount={2}
-        tabIndex={-1}
-        itemKey={(data, index) => `${data.title}-${index}`}
-        render={({ index, width, data }) => {
-          if (isArtwork(data)) {
-            const { Module } = data;
-            return <Module key={index} {...data} />;
-          } else {
-            const { Module } = data;
-            return <Module key={index} {...data} />;
-          }
-        }}
-      /> */}
-
       <XMasonry targetBlockWidth={600} maxColumns={2}>
         {works.map((item, index) => {
           if (isArtwork(item)) {
