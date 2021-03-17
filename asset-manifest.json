@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/knf-portfolio/static/css/main.4f87b60c.chunk.css",
-    "main.js": "/knf-portfolio/static/js/main.bad33938.chunk.js",
-    "main.js.map": "/knf-portfolio/static/js/main.bad33938.chunk.js.map",
-    "runtime-main.js": "/knf-portfolio/static/js/runtime-main.153cc298.js",
-    "runtime-main.js.map": "/knf-portfolio/static/js/runtime-main.153cc298.js.map",
+    "main.js": "/knf-portfolio/static/js/main.5d5672b6.chunk.js",
+    "main.js.map": "/knf-portfolio/static/js/main.5d5672b6.chunk.js.map",
+    "runtime-main.js": "/knf-portfolio/static/js/runtime-main.f65fddec.js",
+    "runtime-main.js.map": "/knf-portfolio/static/js/runtime-main.f65fddec.js.map",
     "static/js/2.ef679154.chunk.js": "/knf-portfolio/static/js/2.ef679154.chunk.js",
     "static/js/2.ef679154.chunk.js.map": "/knf-portfolio/static/js/2.ef679154.chunk.js.map",
     "static/js/3.fed2c492.chunk.js": "/knf-portfolio/static/js/3.fed2c492.chunk.js",
     "static/js/3.fed2c492.chunk.js.map": "/knf-portfolio/static/js/3.fed2c492.chunk.js.map",
-    "static/js/4.8d204c31.chunk.js": "/knf-portfolio/static/js/4.8d204c31.chunk.js",
-    "static/js/4.8d204c31.chunk.js.map": "/knf-portfolio/static/js/4.8d204c31.chunk.js.map",
-    "static/js/5.eb990de4.chunk.js": "/knf-portfolio/static/js/5.eb990de4.chunk.js",
-    "static/js/5.eb990de4.chunk.js.map": "/knf-portfolio/static/js/5.eb990de4.chunk.js.map",
+    "static/js/4.53c02896.chunk.js": "/knf-portfolio/static/js/4.53c02896.chunk.js",
+    "static/js/4.53c02896.chunk.js.map": "/knf-portfolio/static/js/4.53c02896.chunk.js.map",
+    "static/js/5.395894df.chunk.js": "/knf-portfolio/static/js/5.395894df.chunk.js",
+    "static/js/5.395894df.chunk.js.map": "/knf-portfolio/static/js/5.395894df.chunk.js.map",
     "static/js/6.e71f20e5.chunk.js": "/knf-portfolio/static/js/6.e71f20e5.chunk.js",
     "static/js/6.e71f20e5.chunk.js.map": "/knf-portfolio/static/js/6.e71f20e5.chunk.js.map",
     "index.html": "/knf-portfolio/index.html",
@@ -40,9 +40,9 @@
     "static/media/walkabout.cb29da7a.webp": "/knf-portfolio/static/media/walkabout.cb29da7a.webp"
   },
   "entrypoints": [
-    "static/js/runtime-main.153cc298.js",
+    "static/js/runtime-main.f65fddec.js",
     "static/js/2.ef679154.chunk.js",
     "static/css/main.4f87b60c.chunk.css",
-    "static/js/main.bad33938.chunk.js"
+    "static/js/main.5d5672b6.chunk.js"
   ]
 }
