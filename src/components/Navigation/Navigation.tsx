@@ -10,7 +10,7 @@ const featuredSeries = featured.map(({ name }) => ({
   path: `/featured/${slugify(name)}`,
 }));
 
-const NavigationContainer = styled.div`
+const NavigationContainer = styled.nav`
   height: 100%;
   width: 320px;
   position: fixed;
@@ -77,6 +77,9 @@ const Navigation: React.FC<{}> = () => {
       <NavigationItemList>
         <NavigationItem $active={pathname === "/catalog"}>
           <Link to="/catalog">Catalog</Link>
+        </NavigationItem>
+        <NavigationItem $active={pathname === "/news"}>
+          <Link to="/news">News</Link>
         </NavigationItem>
         <NavigationItem $active={pathname === "/about"}>
           <Link to="/about">About the artist</Link>

@@ -15,6 +15,20 @@ export const ModulePicture: React.FC<Artwork> = ({ sources, alt }) => {
   );
 };
 
+const ModuleInquire: React.FC<Artwork> = ({ title, sold }) => (
+  <ModuleInquireContainer>
+    {sold ? (
+      "Sold"
+    ) : (
+      <a
+        href={`mailto:karen.n.fried@gmail.com?subject=Purchase Inquiry: ${title}`}
+      >
+        Inquire to purchase
+      </a>
+    )}
+  </ModuleInquireContainer>
+);
+
 export const ModuleContainer = styled.article<{
   align: "left" | "right" | "full";
 }>`
@@ -23,17 +37,28 @@ export const ModuleContainer = styled.article<{
   /* border: thin solid black; */
 `;
 
-export const ModuleImage = styled.img`
+const ModuleImage = styled.img`
   width: 100%;
   margin-bottom: 8px;
+  transition: transform 200ms ease;
+
+  &:active {
+    transform: scale(1.4);
+    z-index: 1;
+  }
 `;
 
-export const ModuleDescription = styled.div``;
+const ModuleDescription = styled.div``;
 
-export const ModuleTitle = styled.i``;
+const ModuleTitle = styled.i``;
 
-export const ModuleInfo = styled.p`
+const ModuleInfo = styled.p`
   margin: 0;
+`;
+
+const ModuleInquireContainer = styled.small`
+  text-transform: uppercase;
+  /* opacity: 0.8; */
 `;
 
 export const ArtworkModule: React.FC<Artwork> = (props) => (
@@ -43,6 +68,7 @@ export const ArtworkModule: React.FC<Artwork> = (props) => (
       <ModuleTitle>{props.title}</ModuleTitle>
       {props.media && <ModuleInfo>{props.media}</ModuleInfo>}
       {props.size && <ModuleInfo>{formatSize(props.size)}</ModuleInfo>}
+      <ModuleInquire {...props} />
     </ModuleDescription>
   </>
 );

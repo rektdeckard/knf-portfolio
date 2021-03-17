@@ -8,6 +8,11 @@ import {
   Spacer,
 } from "../components/Modules";
 
+import aegis from "../assets/studio_visitors_welcome_strangers/aegis.jpg";
+import aurora from "../assets/studio_visitors_welcome_strangers/aurora.jpg";
+import brilliant_girl from "../assets/studio_visitors_welcome_strangers/brilliant_girl.jpg";
+import forget_me_not from "../assets/studio_visitors_welcome_strangers/forget_me_not.jpg";
+import little_one from "../assets/studio_visitors_welcome_strangers/little_one.jpg";
 import breathing_room from "../assets/touchstone/breathing_room.jpg";
 import pink_cairn from "../assets/touchstone/pink_cairn.jpg";
 import sticks_and_stones_golden from "../assets/touchstone/sticks_and_stones_(golden).jpg";
@@ -16,7 +21,7 @@ import blue_meander from "../assets/meanders/blue_meander.webp";
 import grey_meander from "../assets/meanders/grey_meander.webp";
 import golden_meander from "../assets/meanders/golden_meander.webp";
 import walkabout from "../assets/meanders/walkabout.webp";
-import forget_me_not from "../assets/poetics_of_space/forget_me_not.webp";
+import forget_me_not_p from "../assets/poetics_of_space/forget_me_not.webp";
 import let_everything_happen from "../assets/poetics_of_space/let_everything_happen.webp";
 import scroll from "../assets/poetics_of_space/scroll.webp";
 import instructions_not_included from "../assets/instructions_not_included/instructions_not_included.webp";
@@ -25,6 +30,53 @@ import unexpected_outcome from "../assets/instructions_not_included/unexpected_o
 import unfolding_story from "../assets/instructions_not_included/unfolding_as_it_should.webp";
 
 const featured: Series[] = [
+  {
+    name: "Studio Visitor / Welcome Stranger",
+    color: "#4D5B5D",
+    accent: "",
+    works: [
+      {
+        title: "Aegis",
+        sources: [{ srcSet: aegis }],
+        media: "Acrylic on paper",
+        alt: "Acrylic on paper",
+        size: [30, 22],
+        Module: CenterAlign,
+      },
+      {
+        title: "Aurora",
+        sources: [{ srcSet: aurora }],
+        media: "Acrylic and flashe on paper",
+        alt: "",
+        size: [30, 22],
+        Module: RightAlign,
+      },
+      {
+        title: "Brilliant Girl",
+        sources: [{ srcSet: brilliant_girl }],
+        media: "Acrylic on paper",
+        alt: "",
+        size: [30, 22],
+        Module: RightAlign,
+      },
+      {
+        title: "Forget-Me-Not",
+        sources: [{ srcSet: forget_me_not }],
+        media: "Acrylic and flashe on paper",
+        alt: "",
+        size: [30, 22],
+        Module: RightAlign,
+      },
+      {
+        title: "Little One",
+        sources: [{ srcSet: little_one }],
+        media: "",
+        alt: "",
+        size: [30, 22],
+        Module: RightAlign,
+      },
+    ],
+  },
   {
     name: "Touchstone",
     color: "#D8DDC6",
@@ -36,6 +88,7 @@ const featured: Series[] = [
         media: "Acrylic on paper",
         alt: "",
         size: [30, 22],
+        sold: true,
         Module: LeftAlign,
       },
       { height: 96, Module: Spacer },
@@ -59,6 +112,7 @@ const featured: Series[] = [
         media: "Acrylic on paper",
         alt: "",
         size: [30, 22],
+        sold: true,
         Module: CenterAlign,
       },
       { height: 160, Module: Spacer },
@@ -74,8 +128,8 @@ const featured: Series[] = [
   },
   {
     name: "Meanders",
-    color: "#edc3af",
-    accent: "#C15728",
+    color: "#605854",
+    accent: "#CD8F8D",
     works: [
       {
         title: "Blue Meander",
@@ -124,7 +178,7 @@ const featured: Series[] = [
     works: [
       {
         title: "Forget Me Not",
-        sources: [{ srcSet: forget_me_not }],
+        sources: [{ srcSet: forget_me_not_p }],
         media: "",
         alt: "Acrylic on panel",
         size: [36, 36],
@@ -156,8 +210,8 @@ const featured: Series[] = [
   },
   {
     name: "Instructions Not Included",
-    color: "#c9dbe0",
-    accent: "#7294A4",
+    color: "#3C3F3E",
+    accent: "#BDB19B",
     works: [
       {
         title: "Instructions Not Included",
@@ -165,7 +219,14 @@ const featured: Series[] = [
         media: "Acrylic on panel",
         alt: "",
         size: [24, 30],
+        sold: true,
         Module: LeftAlign,
+      },
+      { height: 96, Module: Spacer },
+      {
+        text:
+          "A little blurb, a musing about this series. A poem that pairs, a quotation, something else.",
+        Module: Quote,
       },
       {
         title: "Open Book",
@@ -175,18 +236,13 @@ const featured: Series[] = [
         size: [20, 30],
         Module: FullWidth,
       },
-      { height: 96, Module: Spacer },
-      {
-        text:
-          "A little blurb, a musing about this series. A poem that pairs, a quotation, something else.",
-        Module: Quote,
-      },
       {
         title: "Unexpected Outcome",
         sources: [{ srcSet: unexpected_outcome }],
         media: "Acrylic on panel",
         alt: "",
         size: [24, 36],
+        sold: true,
         Module: LeftAlign,
       },
       { height: 96, Module: Spacer },
@@ -196,7 +252,7 @@ const featured: Series[] = [
         media: "Acrylic on panel",
         alt: "",
         size: [30, 36],
-        Module: RightAlign,
+        Module: CenterAlign,
       },
     ],
   },

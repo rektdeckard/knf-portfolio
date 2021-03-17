@@ -1,6 +1,6 @@
-import React, { MutableRefObject, useRef } from "react";
+import React, { MutableRefObject, useRef, useEffect } from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useIntersection, useDebounce } from "react-use";
 import { useRecoilState } from "recoil";
 import { XMasonry, XBlock } from "react-xmasonry";
@@ -34,12 +34,13 @@ const interserctionOptions = {
   threshold: 0.5,
 };
 
-const Timeline: React.FC<Series> = ({ name, color, accent, works }) => {
+const FeaturedSeries: React.FC<Series> = ({ name, color, accent, works }) => {
   const history = useHistory();
+  const { pathname } = useLocation();
   const [activeSection, setActiveSection] = useRecoilState(activeSectionAtom);
   const seriesRef = useRef() as MutableRefObject<HTMLDivElement>;
   const intersection = useIntersection(seriesRef, interserctionOptions);
-  
+
   useDebounce(
     () => {
       if (intersection && intersection.isIntersecting) {
@@ -57,6 +58,16 @@ const Timeline: React.FC<Series> = ({ name, color, accent, works }) => {
     200,
     [intersection, activeSection, setActiveSection]
   );
+
+  useEffect(() => {
+    const scrollTimeout = setTimeout(() => {
+      if (pathname === `/featured/${slugify(name)}`)
+        document
+          .getElementById(slugify(name))
+          ?.scrollIntoView({ block: "start", behavior: "smooth" });
+    }, 100);
+    return () => clearTimeout(scrollTimeout);
+  }, []);
 
   return (
     <Layout ref={seriesRef} id={slugify(name)}>
@@ -95,4 +106,4 @@ const Timeline: React.FC<Series> = ({ name, color, accent, works }) => {
   );
 };
 
-export default Timeline;
+export default FeaturedSeries;

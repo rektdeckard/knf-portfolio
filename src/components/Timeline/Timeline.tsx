@@ -41,8 +41,8 @@ const Timeline: React.FC<Series> = ({ name, color, accent, works }) => {
   const seriesRef = useRef() as MutableRefObject<HTMLDivElement>;
   const intersection = useIntersection(seriesRef, interserctionOptions);
 
+  console.log(name, intersection);
   if (intersection && intersection.isIntersecting) {
-    console.log(name, intersection);
     const { time, intersectionRatio } = intersection;
     if (name !== activeSection.name) {
       setActiveSection((curr) =>

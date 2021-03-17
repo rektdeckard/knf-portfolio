@@ -15,6 +15,7 @@ export interface Artwork extends Renderable<Artwork> {
   media?: string;
   alt?: string;
   size?: Size;
+  sold?: boolean;
 }
 
 export interface Series {

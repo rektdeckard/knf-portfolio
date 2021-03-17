@@ -12,7 +12,7 @@ export const activeSectionAtom = atom<ActiveSection>({
   key: "activeSection",
   default: {
     name: "",
-    color: "white",
+    color: "#D8DDC6",
     accent: "black",
     time: 0,
     intersectionRatio: 0,
