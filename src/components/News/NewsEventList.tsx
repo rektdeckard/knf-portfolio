@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { NewsEvents } from "../../data";
@@ -35,27 +35,46 @@ const EventTitle = styled.p`
   margin: 0;
 `;
 
+const EventLink = styled.a`
+  display: block;
+`;
+
+const ExpanderLink = styled.small`
+  margin: 16px 0;
+  cursor: pointer;
+  text-transform: uppercase;
+`;
+
 const NewsEventList: React.FC<NewsEventListProps> = ({ events }) => {
+  const [expanded, setExpanded] = useState<boolean>(false);
+
   return (
-    <DatesList>
-      {events.map(({ year, events }) => (
-        <Date>
-          <Year>{year}</Year>
-          <EventsList>
-            {events.map(({ title, location, url }) => (
-              <Event>
-                {url ? (
-                  <a href={url}>{title}</a>
-                ) : (
-                  <EventTitle>{title}</EventTitle>
-                )}
-                <small>{location}</small>
-              </Event>
-            ))}
-          </EventsList>
-        </Date>
-      ))}
-    </DatesList>
+    <>
+      <DatesList>
+        {(expanded ? events : events.slice(0, 6)).map(({ year, events }) => (
+          <Date>
+            <Year>{year}</Year>
+            <EventsList>
+              {events.map(({ title, location, url }) => (
+                <Event>
+                  {url ? (
+                    <EventLink href={url}>{title}</EventLink>
+                  ) : (
+                    <EventTitle>{title}</EventTitle>
+                  )}
+                  <small>{location}</small>
+                </Event>
+              ))}
+            </EventsList>
+          </Date>
+        ))}
+      </DatesList>
+      {events.length > 6 && (
+        <ExpanderLink onClick={() => setExpanded((e) => !e)}>
+          {expanded ? "Show less" : "Show more"}
+        </ExpanderLink>
+      )}
+    </>
   );
 };
 

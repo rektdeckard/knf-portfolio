@@ -15,4 +15,4 @@ export const isSpacer = (candidate: any): candidate is Spacer => {
 };
 
 export const slugify = (path: string) =>
-  path.split(" ").join("-").toLowerCase();
+  path.replace("/", "").split(/\s+/).join("-").toLowerCase();

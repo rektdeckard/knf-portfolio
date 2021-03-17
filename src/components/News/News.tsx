@@ -4,7 +4,12 @@ import { useSetRecoilState } from "recoil";
 
 import { Instagram } from "../../api";
 import { activeSectionAtom } from "../../state";
-import { soloExhibitions, groupExhibitions } from "../../data";
+import {
+  soloExhibitions,
+  groupExhibitions,
+  selectedExhibitions,
+  press,
+} from "../../data";
 import Loader from "../Loader/Loader";
 import NewsEventList from "./NewsEventList";
 
@@ -49,7 +54,7 @@ const RecentPosts = styled.div`
 `;
 
 const NewsLink = styled.a`
-  text-decoration: underline;
+  text-transform: uppercase;
 `;
 
 const PostContainer = styled.a``;
@@ -121,9 +126,15 @@ const News: React.FC<{}> = () => {
           )}
         </RecentPosts>
         <NewsLink href="https://instagram.com/karennielsenfried">
-          See more
+          <small>See more</small>
         </NewsLink>
       </SectionContainer>
+      <Columns count={1}>
+        <div>
+          <SectionHeading>Press</SectionHeading>
+          <NewsEventList events={press} />
+        </div>
+      </Columns>
       <Columns count={2}>
         <div>
           <SectionHeading>Solo Exhibitions</SectionHeading>
@@ -137,7 +148,8 @@ const News: React.FC<{}> = () => {
       <Columns count={1}>
         <div>
           <SectionHeading>Selected Exhibitions</SectionHeading>
-          <div style={{ height: 1000, backgroundColor: "#FFFFFF40 " }} />
+          <NewsEventList events={selectedExhibitions} />
+          {/* <div style={{ height: 1000, backgroundColor: "#FFFFFF40 " }} /> */}
         </div>
       </Columns>
     </NewsContainer>

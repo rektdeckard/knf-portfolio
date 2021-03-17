@@ -40,7 +40,7 @@ export interface NewsEvents {
 }
 
 export interface NewsEvent {
-  title: string;
-  location?: string;
+  title: React.ReactNode;
+  location?: React.ReactNode;
   url?: string;
 }
