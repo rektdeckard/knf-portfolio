@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 import { Instagram } from "../../api";
 import { activeSectionAtom } from "../../state";
+import { soloExhibitions, groupExhibitions } from "../../data";
 import Loader from "../Loader/Loader";
+import NewsEventList from "./NewsEventList";
 
 enum MediaType {
   IMAGE = "IMAGE",
@@ -58,9 +60,16 @@ const Post = styled.img`
   object-fit: cover;
 `;
 
+const Columns = styled.div<{ count?: number }>`
+  display: grid;
+  grid-template-columns: repeat(${({ count }) => count ?? 1}, 1fr);
+  gap: 132px;
+  margin-bottom: 96px;
+`;
+
 const News: React.FC<{}> = () => {
   const [posts, setPosts] = useState<InstagramPost[]>([]);
-  const [activeSection, setActiveSection] = useRecoilState(activeSectionAtom);
+  const setActiveSection = useSetRecoilState(activeSectionAtom);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -115,11 +124,22 @@ const News: React.FC<{}> = () => {
           See more
         </NewsLink>
       </SectionContainer>
-      <div style={{ display: "flex", gap: 132, marginBottom: 96 }}>
-        <div style={{ flex: 1, height: 800, backgroundColor: "#FFFFFF40 " }} />
-        <div style={{ flex: 1, height: 960, backgroundColor: "#FFFFFF40 " }} />
-      </div>
-      <div style={{ height: 1000, backgroundColor: "#FFFFFF40 " }} />
+      <Columns count={2}>
+        <div>
+          <SectionHeading>Solo Exhibitions</SectionHeading>
+          <NewsEventList events={soloExhibitions} />
+        </div>
+        <div>
+          <SectionHeading>Group Exhibitions</SectionHeading>
+          <NewsEventList events={groupExhibitions} />
+        </div>
+      </Columns>
+      <Columns count={1}>
+        <div>
+          <SectionHeading>Selected Exhibitions</SectionHeading>
+          <div style={{ height: 1000, backgroundColor: "#FFFFFF40 " }} />
+        </div>
+      </Columns>
     </NewsContainer>
   );
 };

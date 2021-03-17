@@ -33,3 +33,14 @@ export interface Spacer extends Renderable<Spacer> {
   height: number;
   width?: number;
 }
+
+export interface NewsEvents {
+  year: number;
+  events: NewsEvent[];
+}
+
+export interface NewsEvent {
+  title: string;
+  location?: string;
+  url?: string;
+}
