@@ -3,20 +3,11 @@ import styled from "styled-components";
 import { useHistory, useLocation } from "react-router-dom";
 import { useIntersection, useDebounce } from "react-use";
 import { useRecoilState } from "recoil";
-import { XMasonry, XBlock } from "react-xmasonry";
 
-import { FullWidth } from "../Modules";
 import { Series } from "../../data/";
 import { activeSectionAtom } from "../../state";
-import { isArtwork, isQuotation, slugify } from "../../utils";
-
-const Layout = styled.section`
-  position: relative;
-  padding-top: 4em;
-  max-width: 956px;
-  margin: 0 auto;
-  transition: opacity 500ms ease;
-`;
+import { isQuotation, isSpacer, slugify } from "../../utils";
+import Work from "../Modules/Work";
 
 const SectionHeading = styled.h1`
   position: relative;
@@ -34,7 +25,29 @@ const interserctionOptions = {
   threshold: 0.5,
 };
 
-const FeaturedSeries: React.FC<Series> = ({ name, color, accent, works }) => {
+const Container = styled.div``;
+
+const Layout = styled.div<{ $grid: string }>`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 160px;
+  grid-template-areas: ${({ $grid }) => $grid};
+  gap: 16px;
+  grid-auto-flow: column dense;
+
+  @media screen and (max-width: 1100px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const FeaturedSeries: React.FC<Series> = ({
+  name,
+  color,
+  accent,
+  works,
+  grid = "",
+}) => {
   const history = useHistory();
   const { pathname } = useLocation();
   const [activeSection, setActiveSection] = useRecoilState(activeSectionAtom);
@@ -69,40 +82,35 @@ const FeaturedSeries: React.FC<Series> = ({ name, color, accent, works }) => {
     return () => clearTimeout(scrollTimeout);
   }, []);
 
-  return (
-    <Layout ref={seriesRef} id={slugify(name)}>
-      <SectionHeading>{name}</SectionHeading>
-      <XMasonry targetBlockWidth={600} maxColumns={2}>
-        {works.map((item, index) => {
-          if (isArtwork(item)) {
-            const { Module } = item;
+  const gridAreas = [
+    ...new Set(
+      grid
+        ?.replace(/["']/g, "")
+        .trim()
+        .split(/\s+/)
+        .filter((c) => c !== ".") ?? []
+    ),
+  ];
 
-            return (
-              <XBlock key={item.title} width={Module === FullWidth ? 2 : 1}>
-                <Module {...item} />
-              </XBlock>
-            );
-          } else if (isQuotation(item)) {
-            const { Module } = item;
-            return (
-              <XBlock key={item.text} width={1}>
-                <Module {...item} />
-              </XBlock>
-            );
-          } else {
-            const { Module } = item;
-            return (
-              <XBlock
-                key={`spacer-${item.height}-${index}`}
-                width={item.width ?? 1}
-              >
-                <Module {...item} />
-              </XBlock>
-            );
-          }
+  return (
+    <Container ref={seriesRef} id={slugify(name)}>
+      <SectionHeading>{name}</SectionHeading>
+      <Layout $grid={grid}>
+        {works.map((item, index) => {
+          if (isSpacer(item)) return null;
+          else if (isQuotation(item)) return null;
+          return (
+            <Work artwork={item} gridArea={gridAreas[index]} />
+            // <div key={index} style={{ gridArea: gridAreas[index] }}>
+            //   <img
+            //     src={item.sources[0]?.srcSet}
+            //     style={{ width: "100%", height: "100%", objectFit: "contain" }}
+            //   />
+            // </div>
+          );
         })}
-      </XMasonry>
-    </Layout>
+      </Layout>
+    </Container>
   );
 };
 

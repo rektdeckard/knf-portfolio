@@ -29,11 +29,31 @@ import open_book from "../assets/instructions_not_included/open_book.webp";
 import unexpected_outcome from "../assets/instructions_not_included/unexpected_outcome.webp";
 import unfolding_story from "../assets/instructions_not_included/unfolding_as_it_should.webp";
 
+enum Grids {
+  A = `
+    "a a . b b b"
+    "a a . b b b"
+    "a a . . c c"
+    "d d d . c c"
+    "d d d . c c"
+    "d d d . c c"
+    "d d d . . ."
+    "d d d . . ."
+    "e e e e e e"
+    "e e e e e e"
+    "f f . g g g"
+    "f f . g g g"
+    "f f . g g g"
+    ". . . g g g"
+`,
+}
+
 const featured: Series[] = [
   {
     name: "Studio Visitor / Welcome Stranger",
     color: "#4D5B5D",
     accent: "",
+    grid: Grids.A,
     works: [
       {
         title: "Aegis",

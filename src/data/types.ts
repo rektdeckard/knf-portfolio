@@ -22,6 +22,7 @@ export interface Series {
   name: string;
   color: string;
   accent?: string;
+  grid?: string;
   works: (Artwork | Quotation | Spacer)[];
 }
 
